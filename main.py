@@ -58,3 +58,5 @@ def fullscreen():
 
 if __name__ == "__main__":
     app.run(debug=True)
+
+# yippeeee im making a comment and this doesnt feel good to write
