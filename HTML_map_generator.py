@@ -4,29 +4,21 @@ from jinja2 import Template
 
 m = folium.Map(location=(45.5236, -122.6750))
 
-# Modify Marker template to include the onClick event
-click_template = """{% macro script(this, kwargs) %}
-    var {{ this.get_name() }} = L.marker(
-        {{ this.location|tojson }},
-        {{ this.options|tojson }}
-    ).addTo({{ this._parent.get_name() }}).on('click', onClick);
-{% endmacro %}"""
+# __________ home_pins.html ___________
 
-# Change template to custom template
+# JS code to call onClick function when pin on map is pressed
+# credit: PeaceLeka, Dec 7 2022,
+# on https://stackoverflow.com/questions/74707544/add-a-clickevent-function-to-multiple-folium-markers-with-python
+click_template = ("{% macro script(this, kwargs) %}\n"
+                  "    var {{ this.get_name() }} = L.marker(\n"
+                  "        {{ this.location|tojson }},\n"
+                  "        {{ this.options|tojson }}\n"
+                  "    ).addTo({{ this._parent.get_name() }}).on('click', onClick);\n"
+                  "{% endmacro %}")
+
+# Add the change to the default codes for the pins
 Marker._template = Template(click_template)
 
-location_center = [51.7678, -0.00675564]
-m = folium.Map(location_center, zoom_start=5)
-
-# Create the onClick listener function as a branca element and add to the map html
-click_js = """function onClick(e) {
-                 var point = e.latlng; alert(point)
-                 }"""
-
-e = folium.Element(click_js)
-html = m.get_root()
-html.script.get_root().render()
-html.script._children[e.get_name()] = e
 
 # Add marker (click on map an alert will display with latlng values)
 marker = folium.Marker([51.7678, -0.00675564]).add_to(m)
@@ -43,19 +35,3 @@ folium.Marker(
     popup="Timberline Lodge",
     icon=folium.Icon(color="green"),
 ).add_to(m)
-
-
-app = Flask(__name__)
-
-
-@app.route("/")
-def fullscreen():
-    """Simple example of a fullscreen map."""
-
-    return m.get_root().render()
-
-if __name__ == "__main__":
-    app.run(debug=True)
-
-# yippeeee im making a comment and this doesnt feel good to write
-# skilll issue yes issue skill yes thats crazy
