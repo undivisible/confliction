@@ -2,9 +2,8 @@ import folium
 from folium.map import Marker
 from jinja2 import Template
 
-m = folium.Map(location=(45.5236, -122.6750))
-
-# __________ home_pins.html ___________
+home_map = folium.Map()
+ukraine_map = folium.Map()
 
 # JS code to call onClick function when pin on map is pressed
 # credit: PeaceLeka, Dec 7 2022,
@@ -19,19 +18,33 @@ click_template = ("{% macro script(this, kwargs) %}\n"
 # Add the change to the default codes for the pins
 Marker._template = Template(click_template)
 
+click_js = """function onClick(e) {
+                 var point = e.latlng; alert(point)
+                 }"""
 
-# Add marker (click on map an alert will display with latlng values)
-marker = folium.Marker([51.7678, -0.00675564]).add_to(m)
-folium.Marker(
-    location=[45.3288, -121.6625],
-    tooltip="Click me!",
-    popup="Mt. Hood Meadows",
-    icon=folium.Icon(icon="cloud"),
-).add_to(m)
+click_js = folium.Element(click_js)
+html = home_map.get_root()
+html.script.get_root().render()
+html.script._children[click_js.get_name()] = click_js
 
-folium.Marker(
-    location=[45.3311, -121.7113],
-    tooltip="Click me!",
-    popup="Timberline Lodge",
-    icon=folium.Icon(color="green"),
-).add_to(m)
+# ____________________________________________________________________________________
+
+
+# __________ home pins __________
+ukraine_marker = folium.Marker([48.37943, 31.16558])
+ukraine_marker.add_to(home_map)
+
+sudan_marker = folium.Marker([12.8628, 30.21763])
+sudan_marker.add_to(home_map)
+
+palestine_marker = folium.Marker([31.95216, 35.23315])
+palestine_marker.add_to(home_map)
+
+# __________ ukraine map __________
+political_countries_url = (
+    "http://geojson.xyz/naturalearth-3.3.0/ne_50m_admin_0_countries.geojson"
+)
+folium.GeoJson(political_countries_url).add_to(ukraine_map)
+
+home_map.save("test.html")
+ukraine_map.save("test2.html")
