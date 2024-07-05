@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
 
@@ -11,6 +11,13 @@ def home_map():
 @app.route("/Ukraine")
 def ukraine_map():
     return render_template("ukraine.html")
+
+
+@app.route('/receive_click', methods=['POST'])
+def receive_click():
+    point = dict(request.json)
+    print(point)
+    return {}
 
 
 if __name__ == '__main__':

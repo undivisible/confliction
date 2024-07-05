@@ -15,36 +15,50 @@ click_template = ("{% macro script(this, kwargs) %}\n"
                   "    ).addTo({{ this._parent.get_name() }}).on('click', onClick);\n"
                   "{% endmacro %}")
 
-# Add the change to the default codes for the pins
 Marker._template = Template(click_template)
 
-click_js = """function onClick(e) {
-                 var point = e.latlng; alert(point)
-                 }"""
+click_js = ("function onClick(e) {"
+            "    var point = e.latlng;"
+            "    fetch('/receive_click', {  "
+            "        method: 'POST', "
+            "        headers: {     "
+            "            'Content-Type': 'application/json'   "
+            "        },"
+            "        body: JSON.stringify(point) "
+            "    })"
+            "    .then(response => response.json())"
+            "}")
 
 click_js = folium.Element(click_js)
-html = home_map.get_root()
-html.script.get_root().render()
-html.script._children[click_js.get_name()] = click_js
+plain_home_map = home_map.get_root()
+plain_home_map.script.get_root().render()
+plain_home_map.script._children[click_js.get_name()] = click_js
 
-# ____________________________________________________________________________________
+# __________ end code insert __________
 
 
 # __________ home pins __________
-ukraine_marker = folium.Marker([48.37943, 31.16558])
+ukraine_marker = folium.Marker([48.37943, 31.16558],
+                               tooltip="Ukraine")
 ukraine_marker.add_to(home_map)
 
-sudan_marker = folium.Marker([12.8628, 30.21763])
+sudan_marker = folium.Marker([12.8628, 30.21763],
+                             tooltip="Sudan")
 sudan_marker.add_to(home_map)
 
-palestine_marker = folium.Marker([31.95216, 35.23315])
+palestine_marker = folium.Marker([31.95216, 35.23315],
+                                 tooltip="Palestine")
 palestine_marker.add_to(home_map)
 
-# __________ ukraine map __________
-political_countries_url = (
-    "http://geojson.xyz/naturalearth-3.3.0/ne_50m_admin_0_countries.geojson"
-)
-folium.GeoJson(political_countries_url).add_to(ukraine_map)
+# save home_map
+home_map.save("home_pins.html")
 
-home_map.save("test.html")
+# __________ ukraine map __________
+countries_border_url = (
+    "https://geojson.xyz/naturalearth-3.3.0/ne_50m_admin_0_countries.geojson"
+)
+
+countries_border = folium.GeoJson(countries_border_url)
+countries_border.add_to(ukraine_map)
+
 ukraine_map.save("test2.html")
