@@ -17,16 +17,13 @@ click_template = ("{% macro script(this, kwargs) %}\n"
 
 Marker._template = Template(click_template)
 
-click_js = ("function onClick(e) {"
-            "    var point = e.latlng;"
-            "    fetch('/receive_click', {  "
-            "        method: 'POST', "
-            "        headers: {     "
-            "            'Content-Type': 'application/json'   "
-            "        },"
-            "        body: JSON.stringify(point) "
-            "    })"
-            "    .then(response => response.json())"
+click_js = ("function onClick(e) {\n"
+            "    var point = String(e.latlng;)\n"
+            "    if (point === 'LatLng(48.37943, 31.16558)') {var extension = '/Ukraine'}\n"
+            "    else if (point === 'LatLng(12.8628, 30.21763)') {var extension = '/Sudan'}\n"
+            "    else if (point === 'LatLng(31.95216, 35.23315)') {var extension = '/Palestine'}\n"
+            "    var new_url = window.location.href.concat(extension);\n"
+            "    window.location.replace(new_url);\n"
             "}")
 
 click_js = folium.Element(click_js)
