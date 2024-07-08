@@ -25,14 +25,19 @@ click_template = ("{% macro script(this, kwargs) %}\n"
 Marker._template = Template(click_template)
 
 click_js = ("function onClick(e) {\n"
-            "    let extension;"
-            "    const point = String(e.latlng)\n"
+            "    let extension;\n"
+            "    let new_url;\n"                                                                   
+            "    const point = String(e.latlng)\n" 
             "    if (point === 'LatLng(48.37943, 31.16558)') {extension = 'Ukraine'}\n"
             "    else if (point === 'LatLng(12.8628, 30.21763)') {extension = 'Sudan'}\n"
             "    else if (point === 'LatLng(31.95216, 35.23315)') {extension = 'Palestine'}\n"
-            "    var new_url = window.location.href.concat(extension);\n"
+            "    new_url = window.location.href.concat(extension);\n"                                                                     
             "    window.location.replace(new_url);\n"
             "}")
+
+button_template = """<button onclick='window.location.replace(window.location.href.split("/").slice(0, -1).join("/"))' 
+style='position: fixed; top: 20px; left: 50px; width: 50px; height: 50px; background-color: white; border: 2px solid 
+black; border-radius: 5%; z-index: 100; text-align: center; padding: 2px; font-size: 30px;'><</button>"""
 
 click_js = folium.Element(click_js)
 plain_home_map = home_map.get_root()
@@ -40,6 +45,11 @@ plain_home_map.script.get_root().render()
 plain_home_map.script._children[click_js.get_name()] = click_js
 
 # __________ end code insert __________
+button_template = folium.Element(button_template)
+
+ukraine_map.get_root().html.add_child(button_template)
+sudan_map.get_root().html.add_child(button_template)
+palestine_map.get_root().html.add_child(button_template)
 
 print("Creating pins and saving home page")
 
