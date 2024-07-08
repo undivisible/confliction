@@ -1,9 +1,12 @@
 import folium
+import csv
 from folium.map import Marker
 from jinja2 import Template
 
-home_map = folium.Map()
-ukraine_map = folium.Map()
+home_map = folium.Map(tiles="cartodbpositron")
+ukraine_map = folium.Map(tiles="cartodbpositron")
+sudan_map = folium.Map(tiles="cartodbpositron")
+palestine_map = folium.Map(tiles="cartodbpositron")
 
 # JS code to call onClick function when pin on map is pressed
 # credit: PeaceLeka, Dec 7 2022,
@@ -48,14 +51,61 @@ palestine_marker = folium.Marker([31.95216, 35.23315],
 palestine_marker.add_to(home_map)
 
 # save home_map
-home_map.save("home_pins.html")
+home_map.save("Templates/home_pins.html")
 
 # __________ ukraine map __________
 countries_border_url = (
     "https://geojson.xyz/naturalearth-3.3.0/ne_50m_admin_0_countries.geojson"
 )
 
-countries_border = folium.GeoJson(countries_border_url)
+country_colours = {}
+for i in ["Ukraine", "Sudan", "Palestine"]:
+    with open(f"Data/{i}_colours.csv", "r") as file:
+        country_colours[i] = {}
+
+        for row in csv.reader(file):
+            country_colours[i][row[0]] = row[1]
+
+
+def get_country_colour(feature, country_map):
+    country = feature["properties"]["name"]
+    if country in country_colours[country_map]:
+        return country_colours[country_map][country]
+    else:
+        return "#008000"
+
+
+countries_border = (
+    folium.GeoJson(countries_border_url,
+                   style_function=lambda feature: {
+                       "fillColor": get_country_colour(feature, "Ukraine"),
+                       "color": "black",
+                       "weight": 2,
+                       "dashArray": "5, 5"
+                   }))
 countries_border.add_to(ukraine_map)
 
-ukraine_map.save("test2.html")
+countries_border = (
+    folium.GeoJson(countries_border_url,
+                   style_function=lambda feature: {
+                       "fillColor": get_country_colour(feature, "Sudan"),
+                       "color": "black",
+                       "weight": 2,
+                       "dashArray": "5, 5"
+                   }))
+countries_border.add_to(sudan_map)
+
+countries_border = (
+    folium.GeoJson(countries_border_url,
+                   style_function=lambda feature: {
+                       "fillColor": get_country_colour(feature, "Palestine"),
+                       "color": "black",
+                       "weight": 2,
+                       "dashArray": "5, 5"
+                   }))
+countries_border.add_to(palestine_map)
+
+
+ukraine_map.save("Templates/ukraine.html")
+sudan_map.save("Templates/sudan.html")
+palestine_map.save("Templates/palestine.html")
