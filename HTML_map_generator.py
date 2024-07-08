@@ -3,10 +3,14 @@ import csv
 from folium.map import Marker
 from jinja2 import Template
 
+print("Creating map objects")
+
 home_map = folium.Map(tiles="cartodbpositron")
 ukraine_map = folium.Map(tiles="cartodbpositron")
 sudan_map = folium.Map(tiles="cartodbpositron")
 palestine_map = folium.Map(tiles="cartodbpositron")
+
+print("Changing pin click templates")
 
 # JS code to call onClick function when pin on map is pressed
 # credit: PeaceLeka, Dec 7 2022,
@@ -21,10 +25,11 @@ click_template = ("{% macro script(this, kwargs) %}\n"
 Marker._template = Template(click_template)
 
 click_js = ("function onClick(e) {\n"
-            "    var point = String(e.latlng;)\n"
-            "    if (point === 'LatLng(48.37943, 31.16558)') {var extension = '/Ukraine'}\n"
-            "    else if (point === 'LatLng(12.8628, 30.21763)') {var extension = '/Sudan'}\n"
-            "    else if (point === 'LatLng(31.95216, 35.23315)') {var extension = '/Palestine'}\n"
+            "    let extension;"
+            "    const point = String(e.latlng)\n"
+            "    if (point === 'LatLng(48.37943, 31.16558)') {extension = 'Ukraine'}\n"
+            "    else if (point === 'LatLng(12.8628, 30.21763)') {extension = 'Sudan'}\n"
+            "    else if (point === 'LatLng(31.95216, 35.23315)') {extension = 'Palestine'}\n"
             "    var new_url = window.location.href.concat(extension);\n"
             "    window.location.replace(new_url);\n"
             "}")
@@ -36,6 +41,7 @@ plain_home_map.script._children[click_js.get_name()] = click_js
 
 # __________ end code insert __________
 
+print("Creating pins and saving home page")
 
 # __________ home pins __________
 ukraine_marker = folium.Marker([48.37943, 31.16558],
@@ -52,6 +58,8 @@ palestine_marker.add_to(home_map)
 
 # save home_map
 home_map.save("Templates/home_pins.html")
+
+print("Finding country borders and reading colour data")
 
 # __________ ukraine map __________
 countries_border_url = (
@@ -72,9 +80,10 @@ def get_country_colour(feature, country_map):
     if country in country_colours[country_map]:
         return country_colours[country_map][country]
     else:
-        return "#008000"
+        return "#008000"  # default colour
 
 
+print("Adding colour to ukraine map")
 countries_border = (
     folium.GeoJson(countries_border_url,
                    style_function=lambda feature: {
@@ -85,6 +94,7 @@ countries_border = (
                    }))
 countries_border.add_to(ukraine_map)
 
+print("Adding colour to sudan map")
 countries_border = (
     folium.GeoJson(countries_border_url,
                    style_function=lambda feature: {
@@ -95,6 +105,7 @@ countries_border = (
                    }))
 countries_border.add_to(sudan_map)
 
+print("Adding colour to palestine map")
 countries_border = (
     folium.GeoJson(countries_border_url,
                    style_function=lambda feature: {
@@ -105,6 +116,7 @@ countries_border = (
                    }))
 countries_border.add_to(palestine_map)
 
+print("Saving remaining maps")
 
 ukraine_map.save("Templates/ukraine.html")
 sudan_map.save("Templates/sudan.html")

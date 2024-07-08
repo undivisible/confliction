@@ -25,7 +25,7 @@
             <meta name="viewport" content="width=device-width,
                 initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
             <style>
-                #map_877b3777c9552d4553e91e6a86ae779b {
+                #map_66f3abae5613a7ebffe2431f2d972caf {
                     position: relative;
                     width: 100.0%;
                     height: 100.0%;
@@ -39,14 +39,14 @@
 <body>
     
     
-            <div class="folium-map" id="map_877b3777c9552d4553e91e6a86ae779b" ></div>
+            <div class="folium-map" id="map_66f3abae5613a7ebffe2431f2d972caf" ></div>
         
 </body>
 <script>
     
     
-            var map_877b3777c9552d4553e91e6a86ae779b = L.map(
-                "map_877b3777c9552d4553e91e6a86ae779b",
+            var map_66f3abae5613a7ebffe2431f2d972caf = L.map(
+                "map_66f3abae5613a7ebffe2431f2d972caf",
                 {
                     center: [0.0, 0.0],
                     crs: L.CRS.EPSG3857,
@@ -60,32 +60,32 @@
 
         
     
-            var tile_layer_2b9512397cf8eb73fd60681c463c4b6c = L.tileLayer(
+            var tile_layer_31fe0c40e89707aed1a26237782ce257 = L.tileLayer(
                 "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
                 {"attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false}
             );
         
     
-            tile_layer_2b9512397cf8eb73fd60681c463c4b6c.addTo(map_877b3777c9552d4553e91e6a86ae779b);
+            tile_layer_31fe0c40e89707aed1a26237782ce257.addTo(map_66f3abae5613a7ebffe2431f2d972caf);
         
     function onClick(e) {
-    var point = String(e.latlng;)
-    if (point === 'LatLng(48.37943, 31.16558)') {var extension = '/Ukraine'}
-    else if (point === 'LatLng(12.8628, 30.21763)') {var extension = '/Sudan'}
-    else if (point === 'LatLng(31.95216, 35.23315)') {var extension = '/Palestine'}
+    let extension;    const point = String(e.latlng)
+    if (point === 'LatLng(48.37943, 31.16558)') {extension = 'Ukraine'}
+    else if (point === 'LatLng(12.8628, 30.21763)') {extension = 'Sudan'}
+    else if (point === 'LatLng(31.95216, 35.23315)') {extension = 'Palestine'}
     var new_url = window.location.href.concat(extension);
     window.location.replace(new_url);
 }
     
-            tile_layer_2b9512397cf8eb73fd60681c463c4b6c.addTo(map_877b3777c9552d4553e91e6a86ae779b);
+            tile_layer_31fe0c40e89707aed1a26237782ce257.addTo(map_66f3abae5613a7ebffe2431f2d972caf);
         
     
-    var marker_52a8beae0c4754513618f37fb1bc8b78 = L.marker(
+    var marker_d3266e0b135abf5058085e901c97f539 = L.marker(
         [48.37943, 31.16558],
         {}
-    ).addTo(map_877b3777c9552d4553e91e6a86ae779b).on('click', onClick);
+    ).addTo(map_66f3abae5613a7ebffe2431f2d972caf).on('click', onClick);
     
-            marker_52a8beae0c4754513618f37fb1bc8b78.bindTooltip(
+            marker_d3266e0b135abf5058085e901c97f539.bindTooltip(
                 `<div>
                      Ukraine
                  </div>`,
@@ -93,12 +93,12 @@
             );
         
     
-    var marker_bf83d1218bd00da9416e8704410f9f80 = L.marker(
+    var marker_89d12b560fc2793dea4530c2b43f0364 = L.marker(
         [12.8628, 30.21763],
         {}
-    ).addTo(map_877b3777c9552d4553e91e6a86ae779b).on('click', onClick);
+    ).addTo(map_66f3abae5613a7ebffe2431f2d972caf).on('click', onClick);
     
-            marker_bf83d1218bd00da9416e8704410f9f80.bindTooltip(
+            marker_89d12b560fc2793dea4530c2b43f0364.bindTooltip(
                 `<div>
                      Sudan
                  </div>`,
@@ -106,12 +106,12 @@
             );
         
     
-    var marker_9ec7ea62aa00e6d2b61fca6022bc7891 = L.marker(
+    var marker_8b1d100e18c52e2de43a4688e3027f41 = L.marker(
         [31.95216, 35.23315],
         {}
-    ).addTo(map_877b3777c9552d4553e91e6a86ae779b).on('click', onClick);
+    ).addTo(map_66f3abae5613a7ebffe2431f2d972caf).on('click', onClick);
     
-            marker_9ec7ea62aa00e6d2b61fca6022bc7891.bindTooltip(
+            marker_8b1d100e18c52e2de43a4688e3027f41.bindTooltip(
                 `<div>
                      Palestine
                  </div>`,
