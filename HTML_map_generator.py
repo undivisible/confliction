@@ -10,7 +10,7 @@ ukraine_map = folium.Map(tiles="cartodbpositron")
 sudan_map = folium.Map(tiles="cartodbpositron")
 palestine_map = folium.Map(tiles="cartodbpositron")
 
-print("Changing pin click templates")
+print("Changing templates")
 
 # JS code to call onClick function when pin on map is pressed
 # credit: PeaceLeka, Dec 7 2022,
@@ -35,16 +35,16 @@ click_js = ("function onClick(e) {\n"
             "    window.location.replace(new_url);\n"
             "}")
 
-button_template = """<button onclick='window.location.replace(window.location.href.split("/").slice(0, -1).join("/"))' 
-style='position: fixed; top: 20px; left: 50px; width: 50px; height: 50px; background-color: white; border: 2px solid 
-black; border-radius: 5%; z-index: 100; text-align: center; padding: 2px; font-size: 30px;'><</button>"""
-
 click_js = folium.Element(click_js)
 plain_home_map = home_map.get_root()
 plain_home_map.script.get_root().render()
 plain_home_map.script._children[click_js.get_name()] = click_js
 
 # __________ end code insert __________
+button_template = """<button onclick='window.location.replace(window.location.href.split("/").slice(0, -1).join("/"))' 
+style='position: fixed; top: 20px; left: 50px; width: 50px; height: 50px; background-color: white; border: 2px solid 
+black; border-radius: 5%; z-index: 900; text-align: center; padding: 2px; font-size: 30px;'><</button>"""
+
 button_template = folium.Element(button_template)
 
 ukraine_map.get_root().html.add_child(button_template)
