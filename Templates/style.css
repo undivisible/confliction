@@ -15,7 +15,7 @@ html, body {
 }
 
 #map_20653af883cbdb176f3344fcfcb3aaf9 {
-    position: relative;
+    position: absolute;
     width: 100.0%;
     height: 100.0%;
     left: 0.0%;
@@ -27,11 +27,15 @@ html, body {
 }
 
 section {
+    position: absolute;
     width: 26vw;
     margin-left: 4vw;
     margin-top: 3vh;
     background-color: #191919;
     border-radius: 20px;
+    z-index: 1;
+    color: white;
+    height: 97vh;
 }
 
 section div {

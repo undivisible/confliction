@@ -41,6 +41,7 @@ fetch('./newdata.json')
   .then(response => response.json())
   .then(jsonData => {
     geo_json_156f22fb7d71d7af0bfa589d95e14ddd_add(jsonData);
-})
+  })
+.catch(error => console.error('Error fetching JSON:', error));
 
 geo_json_156f22fb7d71d7af0bfa589d95e14ddd.addTo(map_20653af883cbdb176f3344fcfcb3aaf9);
