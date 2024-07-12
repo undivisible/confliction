@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+
+    <script>
+        L_NO_TOUCH = false;
+        L_DISABLE_3D = false;
+    </script>
+
+    <style>
+        html,
+        body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+    <style>
+        #map {
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+        }
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.2.0/css/all.min.css" />
+    <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" />
+
+    <meta name="viewport" content="width=device-width,
+                initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <style>
+        #map_415a308bc79fd7bbfbc132f213a3c758 {
+            position: relative;
+            width: 100.0%;
+            height: 100.0%;
+            left: 0.0%;
+            top: 0.0%;
+        }
+
+        .leaflet-container {
+            font-size: 1rem;
+        }
+    </style>
+
+</head>
+
+<body>
+
+
+    <div class="folium-map" id="map_415a308bc79fd7bbfbc132f213a3c758"></div>
+
+</body>
+<script>
+
+
+    var map_415a308bc79fd7bbfbc132f213a3c758 = L.map(
+        "map_415a308bc79fd7bbfbc132f213a3c758",
+        {
+            center: [0.0, 0.0],
+            crs: L.CRS.EPSG3857,
+            zoom: 1,
+            zoomControl: true,
+            preferCanvas: false,
+        }
+    );
+
+
+
+
+
+    var tile_layer_54222de2f0c21e7c0098a387d81663e1 = L.tileLayer(
+        "https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png",
+        { "attribution": "\u0026copy; \u003ca href=\"https://www.openstreetmap.org/copyright\"\u003eOpenStreetMap\u003c/a\u003e contributors \u0026copy; \u003ca href=\"https://carto.com/attributions\"\u003eCARTO\u003c/a\u003e", "detectRetina": false, "maxNativeZoom": 20, "maxZoom": 20, "minZoom": 0, "noWrap": false, "opacity": 1, "subdomains": "abcd", "tms": false }
+    );
+
+
+    tile_layer_54222de2f0c21e7c0098a387d81663e1.addTo(map_415a308bc79fd7bbfbc132f213a3c758);
+
+    function onClick(e) {
+        let extension;
+        let new_url;
+        const point = String(e.latlng)
+        if (point === 'LatLng(48.37943, 31.16558)') { extension = 'Ukraine' }
+        else if (point === 'LatLng(12.8628, 30.21763)') { extension = 'Sudan' }
+        else if (point === 'LatLng(31.95216, 35.23315)') { extension = 'Palestine' }
+        new_url = window.location.href.concat(extension);
+        window.location.replace(new_url);
+    }
+
+    tile_layer_54222de2f0c21e7c0098a387d81663e1.addTo(map_415a308bc79fd7bbfbc132f213a3c758);
+
+
+    var marker_1857c241b9a063f4618627ceac1fb0e0 = L.marker(
+        [48.37943, 31.16558],
+        {}
+    ).addTo(map_415a308bc79fd7bbfbc132f213a3c758).on('click', onClick);
+
+    marker_1857c241b9a063f4618627ceac1fb0e0.bindTooltip(
+        `<div>
+                     Ukraine
+                 </div>`,
+        { "sticky": true }
+    );
+
+
+    var marker_2b4897555eddddaff1e0295f3b816758 = L.marker(
+        [12.8628, 30.21763],
+        {}
+    ).addTo(map_415a308bc79fd7bbfbc132f213a3c758).on('click', onClick);
+
+    marker_2b4897555eddddaff1e0295f3b816758.bindTooltip(
+        `<div>
+                     Sudan
+                 </div>`,
+        { "sticky": true }
+    );
+
+
+    var marker_354aa1254ff7d74448354bd0f4c72c4a = L.marker(
+        [31.95216, 35.23315],
+        {}
+    ).addTo(map_415a308bc79fd7bbfbc132f213a3c758).on('click', onClick);
+
+    marker_354aa1254ff7d74448354bd0f4c72c4a.bindTooltip(
+        `<div>
+                     Palestine
+                 </div>`,
+        { "sticky": true }
+    );
+
+</script>
+
+</html>

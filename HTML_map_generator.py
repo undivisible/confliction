@@ -128,6 +128,6 @@ countries_border.add_to(palestine_map)
 
 print("Saving remaining maps")
 
-ukraine_map.save("Templates/ukraine.html")
-sudan_map.save("Templates/sudan.html")
-palestine_map.save("Templates/palestine.html")
+ukraine_map.save("Templates/Lucas_split_files/ukraine.html")
+sudan_map.save("Templates/Lucas_split_files/sudan.html")
+palestine_map.save("Templates/Lucas_split_files/palestine.html")

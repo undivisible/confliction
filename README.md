@@ -3,9 +3,9 @@
 A flask and folium project that uses maps as a tool to inform the masses on global conflicts
 
 ## Max if you see this:
-In templates there is 2 html files ukraine.html and home_pins.html if you can merge them we could use it as a proof of consept.<br/>
-When pins are clicked in home_pins.html they run a JS function OnClick(e) <br/>
-If you can change the pin map to the ukraine map when OnClick is run then it should work.
+I just divided up the directories up a bit, your work is still saved in single_file and Max_split_file, the stuff in 
+"things we dont need but i think keep them anyway" changed I didn't wat to mess it up and saved it in Max_split_file
+
 
 Ukraine: 48.37943, 31.16558 <br/>
 Sudan: 12.8628, 30.21763 <br/>
