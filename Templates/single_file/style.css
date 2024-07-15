@@ -49,11 +49,11 @@ section {
 
 section > * {
     width: 92%;
-    margin-left: 4%;
+    margin-left: 20px;
 }
 
 .heading {
-    margin-top: 10%;
+    margin-top: 50px;
     margin-bottom: 10px;
 }
 
@@ -66,7 +66,7 @@ h2 {font-size: 15px;}
 
 h4 {font-size: 7px;}
 
-p {font-size: 10px;}
+p {font-size: 10px; min-height: 30px;}
 
 
 .item {
@@ -84,13 +84,16 @@ p {font-size: 10px;}
     display: flex;
     position: absolute;
     right: 20px;
-    background-color: #fe410250;
     border-radius: 5px;
-    color: #fe4102;
     align-items: center;
     justify-content: center;
-    height: 5%;
+    height: 2%;
+    min-height: 30px;
+    min-width: 116px;
 }
+
+.critical {background-color: #fe410220; color: #fe4102;}
+.severe {background-color: #FF845B20; color: #FF845B;}
 
 .item > div > * {
     padding: 5px;
@@ -106,4 +109,41 @@ p {margin-top: 10px;}
 }
 link {
     z-index: 2;
+}
+
+@media screen
+  and (max-device-width: 765px)
+  and (orientation: portrait){
+    section {
+        width: 100vw;
+        bottom: 0;
+        margin-bottom: 0vh;
+        margin-top: auto;
+        height: 30vh;
+        resize: vertical;
+        margin-left: 0;
+        margin-top: 0;
+        border-top-left-radius: 20px;
+        border-top-right-radius: 20px;
+        border-bottom-left-radius: 0;
+        border-bottom-right-radius: 0;
+    }
+
+    h1 {
+        position: sticky;
+        font-size: 24px;
+    }
+
+    .heading {
+        margin-top: 30px;
+        margin-bottom: 10px;
+    }
+}
+
+@media (max-width: 1090px) and (min-width: 765px)
+  {
+    .item > div {
+        position: static;
+        right: 0;
+    }
 }
