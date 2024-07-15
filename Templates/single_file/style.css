@@ -7,7 +7,10 @@ body {
 }
 
 h1, h2, h3 {
-    margin: none;
+    margin-top: 0px;
+    margin-bottom: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
 }
 
 #map {
@@ -32,7 +35,7 @@ h1, h2, h3 {
 
 section {
     position: absolute;
-    width: 33vw;
+    width: 35vw;
     margin-left: 2vw;
     margin-top: 1.5vh;
     background-color: #191919;
@@ -51,6 +54,7 @@ section > * {
 
 .heading {
     margin-top: 10%;
+    margin-bottom: 10px;
 }
 
 h1 {
@@ -69,6 +73,7 @@ p {font-size: 10px;}
     background-color: #202020;
     border-radius: 10px;
     padding: 10px;
+    margin-bottom: 10px;
 }
 
 .item:hover {
@@ -78,16 +83,27 @@ p {font-size: 10px;}
 .item > div {
     display: flex;
     position: absolute;
-    right: 10px;
+    right: 20px;
     background-color: #fe410250;
     border-radius: 5px;
     color: #fe4102;
     align-items: center;
     justify-content: center;
+    height: 5%;
 }
 
-.item > div > * {padding: 10px;}
+.item > div > * {
+    padding: 5px;
+    top: 50%;
+}
+
+p {margin-top: 10px;}
+
+.itemTitle {margin-top: 5px;}
 
 .folium-map {
     z-index: 1;
+}
+link {
+    z-index: 2;
 }
