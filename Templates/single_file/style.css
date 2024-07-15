@@ -6,6 +6,10 @@ body {
     font-family: 'Chivo Mono', sans-serif;
 }
 
+h1, h2, h3 {
+    margin: none;
+}
+
 #map {
     position: absolute;
     top: 0;
@@ -28,7 +32,7 @@ body {
 
 section {
     position: absolute;
-    width: 26vw;
+    width: 33vw;
     margin-left: 2vw;
     margin-top: 1.5vh;
     background-color: #191919;
@@ -54,6 +58,13 @@ h1 {
     font-size: 32px;
 }
 
+h2 {font-size: 15px;}
+
+h4 {font-size: 7px;}
+
+p {font-size: 10px;}
+
+
 .item {
     background-color: #202020;
     border-radius: 10px;
@@ -63,6 +74,19 @@ h1 {
 .item:hover {
     background-color: #252525;
 }
+
+.item > div {
+    display: flex;
+    position: absolute;
+    right: 10px;
+    background-color: #fe410250;
+    border-radius: 5px;
+    color: #fe4102;
+    align-items: center;
+    justify-content: center;
+}
+
+.item > div > * {padding: 10px;}
 
 .folium-map {
     z-index: 1;
