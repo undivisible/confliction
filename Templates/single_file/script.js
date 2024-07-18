@@ -44,4 +44,3 @@ fetch('./newdata.json')
   })
 
 geo_json_156f22fb7d71d7af0bfa589d95e14ddd.addTo(map_20653af883cbdb176f3344fcfcb3aaf9);
-
