@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>confliction</title>
+    
+    <script src="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.js"></script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.js"></script>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/leaflet@1.9.3/dist/leaflet.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <!--<link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" />-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Leaflet.awesome-markers/2.0.2/leaflet.awesome-markers.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/python-visualization/folium/folium/templates/leaflet.awesome.rotate.min.css" />
+
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Chivo+Mono&family=Noto+Color+Emoji&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontawesome/fontawesome-free@6.2.0/css/all.min.css" />
+
+    <style>
+        .folium-map {
+            position: absolute;
+            width: 100.0%;
+            height: 100.0%;
+            left: 0.0%;
+            top: 0.0%;
+            z-index: 1;
+        }
+
+        .leaflet-container {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="map"><div class="folium-map" id="map_978e1658a9f7586289ba29a1a5516b8c" ></div></div>
+    <div class="two" id="two">
+        <header>
+            <a onclick="swap('home')"><div><span class="material-symbols-rounded">close</span></div></a>
+            <div class="name">
+                <h1 id="emoji"></h1>
+                <div class="texts">
+                    <h1 id="title"></h1>
+                    <h2 id="date"></h2>
+                </div>
+            </div>
+            <div id="classification"></div>
+            <section id="content">    
+                <div class="train">
+                    <div class="injured">
+                        <h2 id="injuredCount"></h2>
+                        <h3>INJURED</h3>
+                    </div>
+                    <div class="dead">
+                        <h2 id="killCount"></h2>
+                        <h3>DEAD</h3>
+                    </div>
+                    <div class="starve">
+                        <h2 id="specialCount"></h2>
+                        <h3 id="special"></h3>
+                    </div>
+                </div>
+                <div id="text"></div>     
+            </section>
+        </header>
+        
+    </div>
+    <div>
+        <section id="main">
+            <div class="heading"><h1>CONFLICTS</h1></div>
+            <div class="container">
+                <a onclick="swap('palestine')">
+                    <div class="item">
+                        <div class="critical"><h2>CRITICAL</h2><span class="material-symbols-rounded">warning</span></div>
+                        <h2 class="itemTitle">ISRAEL PALESTINE GENOCIDE</h2>
+                        <h4>1931-PRESENT</h4>
+                        <p>A century-old conflict in the middle east between Israel and Palestine</p>
+                    </div>
+                </a>
+            </div>
+            <div class="container">
+                <a onclick="swap('ukraine')">
+                    <div class="item">
+                        <div class="critical"><h2>CRITICAL</h2><span class="material-symbols-rounded">warning</span></div>
+                        <h2 class="itemTitle">RUSSIAN UKRAINE WAR</h2>
+                        <h4>2012-PRESENT</h4>
+                        <p>Russian military operation in Ukraine after the annexation of Crimea</p>
+                    </div>
+                </a>
+            </div>
+            <div class="container">
+                <a onclick="swap('sudan')">
+                    <div class="item">
+                        <div class="severe"><h2>SEVERE</h2></div>
+                        <h2 class="itemTitle">SUDAN CONFLICT</h2>
+                        <h4>2923-PRESENT</h4>
+                        <p>Internal conflicts in Sudan.</p>
+                    </div>
+                </a>
+            </div>
+        </section> 
+    </div>
+</body>
+<script src="function.js"></script>
+</html>

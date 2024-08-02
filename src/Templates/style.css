@@ -1,9 +1,29 @@
+@keyframes swap {
+    from {width: 35vw;}
+    to {width: 0vw;}
+}
+
+@keyframes swapR {
+    from {width: 0vw;}
+    to {width: 35vw;}
+}
+
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeOut {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
 body {
     width: 100%;
     height: 100%;
     margin: 0;
     padding: 0;
-    font-family: 'Chivo Mono', sans-serif;
+    font-family: 'Chivo Mono', 'Noto Color Emoji', sans-serif;
 }
 
 h1, h2, h3 {
@@ -21,28 +41,14 @@ h1, h2, h3 {
     left: 0;
 }
 
-#map_20653af883cbdb176f3344fcfcb3aaf9 {
+section#main {
     position: absolute;
-    width: 100.0%;
-    height: 100.0%;
-    left: 0.0%;
-    top: 0.0%;
-}
-
-.leaflet-container {
-    font-size: 1rem;
-}
-
-section {
-    position: absolute;
-    width: 35vw;
-    margin-left: 2vw;
-    margin-top: 1.5vh;
+    width: 40vw;
     background-color: #191919;
-    border-radius: 20px;
-    z-index: 2;
+    border-radius: 0px 10px 10px 0px;
+    z-index: 3;
     color: white;
-    height: 97vh;
+    height: 100vh;
     resize: horizontal;
     overflow: auto;
     transition: all 1s ease-out;
@@ -52,6 +58,75 @@ section > * {
     width: 92%;
     margin-left: 20px;
 }
+
+section#content {
+    height: 95vh;
+    position: absolute;
+    width: 99%;
+    margin-left: -34px;
+    margin-top: 74px;
+    background-color: #191919;
+    border-radius: 20px;
+    z-index: 3;
+    color: white;
+    resize: horizontal;
+    overflow: auto;
+    transition: all 1s ease-out;
+}
+
+header > * {
+    height: 64px;
+    border-radius: 10px;
+    margin-left: 10px;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header > a > div {
+    width: 64px;
+    height: 64px;
+    background-color: #191919;
+    border-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+header > a > div > .material-symbols-rounded {color: white;}
+
+.name {
+    padding: 15px;
+    color: white;
+    background-color: #191919;
+    min-width: 15vw;
+}
+
+.train {
+    background-color: #202020;
+}
+
+.texts {margin-left: 10px;}
+
+#title {
+    font-size: 18px;
+}
+
+#date {
+    font-size: 15px;
+}
+
+
+header {
+    height: 64px;
+    margin-left: 42px;
+    margin-top: 10px;
+    display: flex;
+    z-index: 3;
+}
+
+.two {position: absolute;}
 
 .heading {
     margin-top: 50px;
@@ -108,13 +183,24 @@ p {margin-top: 10px;}
 .folium-map {
     z-index: 1;
 }
-link {
+
+#sidebar {
     z-index: 2;
+}
+
+#classification {
+    padding: 10px;
+    min-width: 5vw;
 }
 
 @media screen
   and (max-device-width: 765px)
   and (orientation: portrait){
+    @keyframes swap {
+        from {height: 40vh;}
+        to {height: 0vh;}
+    }
+
     section {
         width: 100vw;
         bottom: 0;

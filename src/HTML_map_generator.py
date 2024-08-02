@@ -25,14 +25,12 @@ click_template = ("{% macro script(this, kwargs) %}\n"
 Marker._template = Template(click_template)
 
 click_js = ("function onClick(e) {\n"
-            "    let extension;\n"
-            "    let new_url;\n"                                                                   
-            "    const point = String(e.latlng)\n" 
-            "    if (point === 'LatLng(48.37943, 31.16558)') {extension = 'Ukraine'}\n"
-            "    else if (point === 'LatLng(12.8628, 30.21763)') {extension = 'Sudan'}\n"
-            "    else if (point === 'LatLng(31.95216, 35.23315)') {extension = 'Palestine'}\n"
-            "    new_url = window.location.href.concat(extension);\n"                                                                     
-            "    window.location.replace(new_url);\n"
+            "    let extension;\n"                                                                 
+            "    const point = String(e.latlng);\n" 
+            "    if (point === 'LatLng(48.37943, 31.16558)') {extension = 'ukraine'}\n"
+            "    else if (point === 'LatLng(12.8628, 30.21763)') {extension = 'sudan'}\n"
+            "    else if (point === 'LatLng(31.95216, 35.23315)') {extension = 'palestine'}\n"
+            "    text(extension);\n"
             "}")
 
 click_js = folium.Element(click_js)
