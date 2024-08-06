@@ -79,8 +79,11 @@ for i in ["Ukraine", "Sudan", "Palestine"]:
     with open(f"Data/{i}_colours.csv", "r") as file:
         country_colours[i] = {}
 
-        for row in csv.reader(file):
-            country_colours[i][row[0]] = row[1]
+        for num, row in enumerate(csv.reader(file)):
+            try:
+                country_colours[i][row[0]] = row[1]
+            except Exception:
+                print(row, i, num)
 
 
 def get_country_colour(feature, country_map):
@@ -88,7 +91,7 @@ def get_country_colour(feature, country_map):
     if country in country_colours[country_map]:
         return country_colours[country_map][country]
     else:
-        return "#008000"  # default colour
+        return "#446324"  # default colour
 
 
 print("Adding colour to ukraine map")
