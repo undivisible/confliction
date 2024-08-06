@@ -11,10 +11,13 @@ async function text(conflict) {
         "text",
       ];
 
-    //if (conflict == 'clear') {
-            //document.getElementById('two').style.animation = 'fadeOut 1s ease-out forwards';
-    //}
-   // else {
+    if (conflict == 'clear') {
+        ids.forEach((id) => {
+          const element = document.getElementById(id);
+          element.innerHTML = '';
+        });
+    }
+   else {
         try {
             const response = await fetch("json/" + conflict + ".json");
             const data = await response.json();
@@ -54,12 +57,11 @@ async function text(conflict) {
                   }
               }
               }
-              //document.getElementById('two').style.animation = 'fadeIn 1s ease-in forwards';
             });
           } catch (error) {
             console.error("Error fetching or updating JSON data:", error);
           }
-    //}
+    }
 }
 
 function swap(page) {
@@ -108,18 +110,14 @@ async function map() {
   );
 
   function onClick(e) {
-    let extension;
-    let new_url;
     const point = String(e.latlng);
     if (point === "LatLng(48.37943, 31.16558)") {
-      extension = "Ukraine";
+      swap('ukraine');
     } else if (point === "LatLng(12.8628, 30.21763)") {
-      extension = "Sudan";
+      swap('sudan');
     } else if (point === "LatLng(31.95216, 35.23315)") {
-      extension = "Palestine";
+      swap('palestine');
     }
-    new_url = window.location.href.concat(extension);
-    window.location.replace(new_url);
   }
 
   tile_layer_05af2b5a63cfd8fc9dac4ef4054b7fb2.addTo(
