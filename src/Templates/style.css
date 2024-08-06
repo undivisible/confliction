@@ -220,6 +220,13 @@ p {margin-top: 10px;}
     min-width: 5vw;
 }
 
+.map {
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    z-index: 1;
+}
+
 @media screen
   and (max-device-width: 765px)
   and (orientation: portrait){
