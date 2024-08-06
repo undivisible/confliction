@@ -21,7 +21,7 @@ async function text(conflict) {
     }
    else {
         try {
-            const response = await fetch("json/" + conflict + ".json");
+            const response = await fetch("Data/" + conflict + ".json");
             const data = await response.json();
         
             ids.forEach((id) => {
@@ -71,18 +71,18 @@ function swap(page) {
   content = document.getElementById("main");
   if (page == 'home') {
     content.style.animation = "swapR 1s forwards"
-    $("#map").load("Lucas_split_files/home_pins.html");
+    $("#map").load("html_maps/home_pins.html");
     setTimeout(() => {
       text('clear');   
     }, 100);
   }
   else {
     content.style.animation = "swap 1s forwards";
-    $("#map").load("Lucas_split_files/" + page + ".html"); 
+    $("#map").load("html_maps/" + page + ".html");
     text(page);
   }
 }
 
 document.addEventListener("DOMContentLoaded", () => {
-    $("#map").load("Lucas_split_files/home_pins.html"); 
+    $("#map").load("html_maps/home_pins.html");
 });

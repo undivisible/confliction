@@ -10,17 +10,17 @@ def home_map():
 
 """@app.route("/Ukraine")
 def ukraine_map():
-    return render_template("Lucas_split_files/ukraine.html")
+    return render_template("html_maps/ukraine.html")
 
 
 @app.route("/Sudan")
 def sudan_map():
-    return render_template("Lucas_split_files/sudan.html")
+    return render_template("html_maps/sudan.html")
 
 
 @app.route("/Palestine")
 def palestine_map():
-    return render_template("Lucas_split_files/palestine.html")"""
+    return render_template("html_maps/palestine.html")"""
 
 
 if __name__ == '__main__':
