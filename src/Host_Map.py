@@ -5,10 +5,10 @@ app = Flask(__name__)
 
 @app.route("/")
 def home_map():
-    return render_template("Lucas_split_files/home_pins.html")
+    return render_template("index.html")
 
 
-@app.route("/Ukraine")
+"""@app.route("/Ukraine")
 def ukraine_map():
     return render_template("Lucas_split_files/ukraine.html")
 
@@ -20,7 +20,7 @@ def sudan_map():
 
 @app.route("/Palestine")
 def palestine_map():
-    return render_template("Lucas_split_files/palestine.html")
+    return render_template("Lucas_split_files/palestine.html")"""
 
 
 if __name__ == '__main__':
