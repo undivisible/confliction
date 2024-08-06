@@ -39,7 +39,6 @@ section#main {
     z-index: 3;
     color: white;
     height: 100vh;
-    resize: horizontal;
     overflow: auto;
     transition: all 1s ease-out;
 }
@@ -50,7 +49,7 @@ section > * {
 }
 
 section#content {
-    height: 95vh;
+    height: 93.5vh;
     position: absolute;
     width: 99%;
     margin-left: -34px;
@@ -59,7 +58,6 @@ section#content {
     border-radius: 20px;
     z-index: 3;
     color: white;
-    resize: horizontal;
     overflow: auto;
     transition: all 1s ease-out;
     flex-direction: column;
@@ -135,6 +133,15 @@ header > a > div > .material-symbols-rounded {color: white;}
     font-size: 15px;
 }
 
+#text {
+    width: 90%;
+    background-color: #202020;
+    margin-left: 0;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    height: 89%;
+}
 
 header {
     height: 64px;
