@@ -5,6 +5,7 @@ from jinja2 import Template
 
 print("Creating map objects")
 
+# create maps
 home_map = folium.Map(tiles="cartodbpositron")
 ukraine_map = folium.Map(tiles="cartodbpositron")
 sudan_map = folium.Map(tiles="cartodbpositron")
@@ -22,8 +23,10 @@ click_template = ("{% macro script(this, kwargs) %}\n"
                   "    ).addTo({{ this._parent.get_name() }}).on('click', onClick);\n"
                   "{% endmacro %}")
 
-Marker._template = Template(click_template)
+Marker._template = Template(click_template)  # add template to marker
 
+
+# create js function to pick up pin clicks that change the
 click_js = ("function onClick(e) {\n"
             "    let extension;\n"                                                                 
             "    const point = String(e.latlng);\n" 

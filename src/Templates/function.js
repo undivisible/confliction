@@ -23,7 +23,7 @@ async function text(conflict) {
    else {
         try {
           //set text for information
-            const response = await fetch("Data/" + conflict + ".json");
+            const response = await fetch("Static/Data/" + conflict + ".json");
             const data = await response.json();
         
             ids.forEach((id) => {
@@ -70,14 +70,14 @@ function swap(page) {
   content = document.getElementById("main");
   if (page == 'home') {
     content.style.animation = "swapR 1s forwards"
-    $("#map").load("html_maps/home_pins.html");
+    $("#map").load("Static/html_maps/home_pins.html");
     setTimeout(() => {
       text('clear');   
     }, 100);
   }
   else {
     content.style.animation = "swap 1s forwards";
-    $("#map").load("html_maps/" + page + ".html");
+    $("#map").load("Static/html_maps/" + page + ".html");
     text(page);
   }
 }
@@ -86,12 +86,12 @@ async function list() {
   const main = document.getElementById("main");
   
   try {
-    const raw = await fetch("Data/list.json");
+    const raw = await fetch("Static/Data/list.json");
     const list = await raw.json();
 
     for (const country of list["countries"]) {
       try {
-        const infoR = await fetch(`Data/${country}.json`);
+        const infoR = await fetch(`Static/Data/${country}.json`);
         const info = await infoR.json();
         
         const classification = info.classification || "UNKNOWN";
@@ -126,6 +126,6 @@ async function list() {
 
 document.addEventListener("DOMContentLoaded", () => {
   //things to do on load
-    $("#map").load("html_maps/home_pins.html"); 
+    $("#map").load("Static/html_maps/home_pins.html");
     list();
 });
