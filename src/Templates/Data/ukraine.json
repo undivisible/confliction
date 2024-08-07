@@ -1,8 +1,9 @@
 {
+    "id": "ukraine",
     "classification": "CRITICAL",
     "emoji": "🇺🇦",
     "title": "RUSSIAN INVASION OF UKRAINE",
-    "date": "24/02/2022 – present",
+    "date": "24/02/2022 – PRESENT",
     "injuredCount": 10,
     "killCount": 450000,
     "special": "DISPLACEMENTS",

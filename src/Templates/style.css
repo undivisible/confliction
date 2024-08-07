@@ -195,8 +195,10 @@ p {font-size: 10px; min-height: 30px;}
     min-width: 116px;
 }
 
-.critical {background-color: #fe410220; color: #fe4102;}
-.severe {background-color: #FF845B20; color: #FF845B;}
+.critical {background-color: #462114; color: #fe4102;}
+.severe {background-color: #4c342c; color: #FF845B;}
+.volatile {background-color: #4c4c3f; color:#FFFDBB;}
+.resolved {background-color: #253626; color: #388E3C;}
 
 .item > div > * {
     padding: 5px;

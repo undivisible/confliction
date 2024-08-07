@@ -12,6 +12,7 @@ async function text(conflict) {
       ];
 
     if (conflict == 'clear') {
+      //reset text
       setTimeout(() => {
         ids.forEach((id) => {
           const element = document.getElementById(id);
@@ -21,6 +22,7 @@ async function text(conflict) {
     }
    else {
         try {
+          //set text for information
             const response = await fetch("Data/" + conflict + ".json");
             const data = await response.json();
         
@@ -28,6 +30,7 @@ async function text(conflict) {
               const element = document.getElementById(id);
               if (element) {
                 if (id === "injuredCount" || id === "killCount" || id === "specialCount") {
+                  //numbers have a count up animation
                     let current = 0;
                     const increment = data[id] / (3000 / 16);
         
@@ -42,19 +45,14 @@ async function text(conflict) {
                 } 
                 else { 
                   element.innerHTML = data[id];
+                  //set the color for the classification
                   if (id === "classification") {
                         if (data[id] == 'CRITICAL') {
                             element.innerHTML = element.innerHTML + '<span class="material-symbols-rounded">warning</span>';
-                            element.style.backgroundColor = '#462114';
-                            element.style.color = '#FE4002';
+                            element.classList.add(data[id].toLowerCase());
                         }
-                        else if (data[id] == 'SEVERE') {
-                            element.style.backgroundColor = '#4c342c';
-                            element.style.color = '#FF845B';
-                        }
-                        else if (data[id] == 'VOLATILE') {
-                            element.style.backgroundColor = '#4c4c3f';
-                            element.style.color = '#FFFDBB';
+                        else {
+                          element.classList.add(data[id].toLowerCase());
                         }
                   }
               }
@@ -67,6 +65,7 @@ async function text(conflict) {
 }
 
 function swap(page) {
+  //swapping page with animations and swapping files
   sidebar = document.getElementById("sidebar");
   content = document.getElementById("main");
   if (page == 'home') {
@@ -83,6 +82,50 @@ function swap(page) {
   }
 }
 
+async function list() {
+  const main = document.getElementById("main");
+  
+  try {
+    const raw = await fetch("Data/list.json");
+    const list = await raw.json();
+
+    for (const country of list["countries"]) {
+      try {
+        const infoR = await fetch(`Data/${country}.json`);
+        const info = await infoR.json();
+        
+        const classification = info.classification || "UNKNOWN";
+        const isClassificationCritical = classification.toUpperCase() === "CRITICAL";
+
+        const classDiv = isClassificationCritical
+          ? `<div class="critical"><h2>CRITICAL</h2><span class="material-symbols-rounded">warning</span></div>`
+          : `<div class="${classification.toLowerCase()}"><h2>${classification}</h2></div>`;
+
+        const newItem = `
+          <div class="container">
+            <a onclick="swap('${info.id}')">
+              <div class="item">
+                ${classDiv}
+                <h2 class="itemTitle">${info.title}</h2>
+                <h4>${info.date}</h4>
+                <p>${info.blurb}</p>
+              </div>
+            </a>
+          </div>
+        `;
+
+        main.innerHTML += newItem;
+      } catch (error) {
+        console.error(`Error fetching data for ${country}:`, error);
+      }
+    }
+  } catch (error) {
+    console.error("Error fetching list:", error);
+  }
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-    $("#map").load("html_maps/home_pins.html");
+  //things to do on load
+    $("#map").load("html_maps/home_pins.html"); 
+    list();
 });
