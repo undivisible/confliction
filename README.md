@@ -16,20 +16,20 @@ A flask and folium project that uses maps as a tool to inform the masses on glob
 │       │ function.js
 │       │ script.js
 │       │ style.css
-│       │
-│       ├───Data <-- customisable files, for developer
-│       │   │ country1.json
-│       │   │ country2.json
-│       │   │ country3.json
-│       │   │ country1.csv
-│       │   │ country2.csv
-│       │   │ country3.csv
-│       │
-│       └───html_maps <-- generated maps that are put underneath index.html
-│           │ home_pins.html
-│           │ palestine.html
-│           │ sudan.html
-│           │ ukraine.html
+│       └───Static
+│           ├───Data <-- customisable files, for developer
+│           │   │ country1.json
+│           │   │ country2.json
+│           │   │ country3.json
+│           │   │ country1.csv
+│           │   │ country2.csv
+│           │   │ country3.csv
+│           │
+│           └───html_maps <-- generated maps that are put underneath index.html
+│               │ home_pins.html
+│               │ palestine.html
+│               │ sudan.html
+│               │ ukraine.html
 
 src="{{ url_for('serve_css', filename='function.js') }}"
 href="{{ url_for('serve_css', filename='style.css') }}"

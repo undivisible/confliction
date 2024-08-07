@@ -25,67 +25,70 @@ click_template = ("{% macro script(this, kwargs) %}\n"
 
 Marker._template = Template(click_template)  # add template to marker
 
-
-# create js function to pick up pin clicks that change the
+# create js function to pick up pin clicks that change the pages
 click_js = ("function onClick(e) {\n"
-            "    let extension;\n"                                                                 
-            "    const point = String(e.latlng);\n" 
+            "    let extension;\n"
+            "    const point = String(e.latlng);\n"
             "    if (point === 'LatLng(48.37943, 31.16558)') {extension = 'ukraine'}\n"
             "    else if (point === 'LatLng(12.8628, 30.21763)') {extension = 'sudan'}\n"
             "    else if (point === 'LatLng(31.95216, 35.23315)') {extension = 'palestine'}\n"
             "    text(extension);\n"
             "}")
 
+# add function to scripts
 click_js = folium.Element(click_js)
 plain_home_map = home_map.get_root()
 plain_home_map.script.get_root().render()
 plain_home_map.script._children[click_js.get_name()] = click_js
 
-# __________ end code insert __________
-button_template = """<button onclick='window.location.replace(window.location.href.split("/").slice(0, -1).join("/"))' 
-style='position: fixed; top: 20px; left: 50px; width: 50px; height: 50px; background-color: white; border: 2px solid 
-black; border-radius: 5%; z-index: 900; text-align: center; padding: 2px; font-size: 30px;'><</button>"""
-
+# code to create back button (no longer needed)
+"""
+button_template = (
+    "<button onclick='window.location.replace(window.location.href.split(\"/\").slice(0, -1).join(\"/\"))'"
+    "style='position: fixed; top: 20px; left: 50px; width: 50px; height: 50px;"
+    "background-color: white; border: 2px solid black; border-radius: 5%; z-index: 900;"
+    "text-align: center; padding: 2px; font-size: 30px;'><</button>"
+    )
 button_template = folium.Element(button_template)
 
 ukraine_map.get_root().html.add_child(button_template)
 sudan_map.get_root().html.add_child(button_template)
 palestine_map.get_root().html.add_child(button_template)
-
+"""
 print("Creating pins and saving home page")
 
 # __________ home pins __________
-ukraine_marker = folium.Marker([48.37943, 31.16558],
-                               tooltip="Ukraine")
+# add pin to home map for each country
+ukraine_marker = folium.Marker([48.37943, 31.16558], tooltip="Ukraine")
 ukraine_marker.add_to(home_map)
 
-sudan_marker = folium.Marker([12.8628, 30.21763],
-                             tooltip="Sudan")
-sudan_marker.add_to(home_map)
-
-palestine_marker = folium.Marker([31.95216, 35.23315],
-                                 tooltip="Palestine")
+palestine_marker = folium.Marker([31.95216, 35.23315], tooltip="Palestine")
 palestine_marker.add_to(home_map)
+
+# sudan_marker = folium.Marker([12.8628, 30.21763], tooltip="Sudan")
+# sudan_marker.add_to(home_map)
 
 # save home_map
 home_map.save("Templates/home_pins.html")
 
 print("Finding country borders and reading colour data")
 
-# __________ ukraine map __________
+# get country boarders
 countries_border_url = (
     "https://geojson.xyz/naturalearth-3.3.0/ne_50m_admin_0_countries.geojson"
 )
 
-country_colours = {}
-for i in ["Ukraine", "Sudan", "Palestine"]:
-    with open(f"Data/{i}_colours.csv", "r") as file:
+country_colours = {} # dictionary of all country colours
+for i in ["Ukraine", "Sudan", "Palestine"]:  # for each country
+    # grab the CSV file of the country from Data/
+    with open(f"Templates/Static/Data/{i}_colours.csv", "r") as file:
+        # dictionary of country colours inside country_colours, dict in dict
         country_colours[i] = {}
 
-        for num, row in enumerate(csv.reader(file)):
+        for num, row in enumerate(csv.reader(file)):  # for every country in CSV file
             try:
-                country_colours[i][row[0]] = row[1]
-            except Exception:
+                country_colours[i][row[0]] = row[1]  # add country and colour to dict
+            except Exception:  # catch errors
                 print(row, i, num)
 
 
