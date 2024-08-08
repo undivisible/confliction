@@ -44,6 +44,7 @@ async function text(conflict) {
                     }, 16);
                 } 
                 else { 
+                  //set text
                   element.innerHTML = data[id];
                   //set the color for the classification
                   if (id === "classification") {
@@ -83,24 +84,29 @@ function swap(page) {
 }
 
 async function list() {
+  //establish container
   const main = document.getElementById("main");
   
   try {
+    //fetch list json
     const raw = await fetch("Static/Data/list.json");
     const list = await raw.json();
 
     for (const country of list["countries"]) {
       try {
+        //fetch country json
         const infoR = await fetch(`Static/Data/${country}.json`);
         const info = await infoR.json();
         
         const classification = info.classification || "UNKNOWN";
         const isClassificationCritical = classification.toUpperCase() === "CRITICAL";
 
+        //set classification
         const classDiv = isClassificationCritical
           ? `<div class="critical"><h2>CRITICAL</h2><span class="material-symbols-rounded">warning</span></div>`
           : `<div class="${classification.toLowerCase()}"><h2>${classification}</h2></div>`;
 
+        //create list item
         const newItem = `
           <div class="container">
             <a onclick="swap('${info.id}')">
