@@ -69,14 +69,20 @@ function swap(page) {
   //swapping page with animations and swapping files
   sidebar = document.getElementById("sidebar");
   content = document.getElementById("main");
+  information = document.getElementById("header");
   if (page == 'home') {
-    content.style.animation = "swapR 1s forwards"
+    content.style.animation = "swapR 1s forwards";
     $("#map").load("Static/html_maps/home_pins.html");
     setTimeout(() => {
       text('clear');   
     }, 100);
+    information.style.animation = "fadeR 1s forwards";
+    information.style.display = "none";
   }
+
   else {
+    information.style.display = "flex";
+    information.style.animation = "fade 1s forwards";
     content.style.animation = "swap 1s forwards";
     $("#map").load("Static/html_maps/" + page + ".html");
     text(page);

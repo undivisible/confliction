@@ -8,6 +8,17 @@
     to {width: 35vw;}
 }
 
+@keyframes fade {
+    from {opacity: 0;}
+    to {opacity: 1;}
+}
+
+@keyframes fadeR {
+    from {opacity: 1;}
+    to {opacity: 0;}
+}
+
+
 body {
     width: 100%;
     height: 100%;
@@ -147,7 +158,8 @@ header {
     height: 64px;
     margin-left: 42px;
     margin-top: 10px;
-    display: flex;
+    display: none;
+    opacity: 0;
     z-index: 3;
 }
 
@@ -236,20 +248,80 @@ p {margin-top: 10px;}
         from {height: 40vh;}
         to {height: 0vh;}
     }
+    
+    @keyframes swapR {
+        from {height: 0vh;}
+        to {height: 40vh;}
+    }
 
-    section {
+    section#main {
         width: 100vw;
         bottom: 0;
+        left: 0;
+        right: 0;
+        top: 0;
         margin-bottom: 0vh;
         margin-top: auto;
         height: 40vh;
         resize: vertical;
         margin-left: 0;
-        margin-top: 0;
+        margin-right: 0;
         border-top-left-radius: 20px;
         border-top-right-radius: 20px;
         border-bottom-left-radius: 0;
         border-bottom-right-radius: 0;
+    }
+
+    header {
+        background-color: #191919;
+        z-index: 3;
+        color: white;
+        overflow: auto;
+        transition: all 1s ease-out;
+        width: 100vw;
+        margin: 0;
+        height: 100vh;
+        resize: vertical;
+        border-radius: 0px;
+        position: absolute;
+    }
+
+    .name {
+        position: absolute;
+        margin-top: 94px;
+    }
+
+    #title {
+        font-size: 24px;
+    }
+
+    #emoji {
+        font-size: 36px;
+    }
+
+    #classification, header > a {
+        margin-top: 15px;
+    }
+
+    #classification {
+        margin-right: 15px;
+        margin-left: auto;
+    }
+
+    section#content {
+        height: max-content;
+        position: absolute;
+        width: 100vw;
+        margin-left: 0;
+        margin-top: 173px;
+        background-color: #191919;
+        border-radius: 20px;
+        z-index: 3;
+        color: white;
+        overflow: auto;
+        transition: all 1s ease-out;
+        flex-direction: column;
+        justify-content: center;
     }
 
     .item {padding: 15px;}
