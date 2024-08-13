@@ -1,9 +1,9 @@
 {
   "name": "diplomap",
   "productName": "diplomap",
-  "version": "1.0.0",
-  "description": "My Electron application description",
-  "main": "src/index.js",
+  "version": "0.2.1",
+  "description": "a project to inform masses on conflicts",
+  "main": "src/Templates/index.html",
   "scripts": {
     "start": "electron-forge start",
     "package": "electron-forge package",
@@ -25,7 +25,7 @@
   "keywords": [],
   "author": {
     "name": "undivisible",
-    "email": "vms.fang.vortexmemesquad@gmail.com"
+    "email": "undivisible@vk.com"
   },
   "license": "MIT",
   "dependencies": {
