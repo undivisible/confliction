@@ -77,7 +77,9 @@ function swap(page) {
       text('clear');   
     }, 100);
     information.style.animation = "fadeR 1s forwards";
-    information.style.display = "none";
+    setTimeout(() => {
+      information.style.display = "none";   
+    }, 1000);
   }
 
   else {
