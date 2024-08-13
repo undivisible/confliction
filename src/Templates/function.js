@@ -48,13 +48,14 @@ async function text(conflict) {
                   element.innerHTML = data[id];
                   //set the color for the classification
                   if (id === "classification") {
-                        if (data[id] == 'CRITICAL') {
-                            element.innerHTML = element.innerHTML + '<span class="material-symbols-rounded">warning</span>';
-                            element.classList.add(data[id].toLowerCase());
-                        }
-                        else {
-                          element.classList.add(data[id].toLowerCase());
-                        }
+                    element.classList.remove('critical', 'severe', 'volatile', 'resolved');
+                    if (data[id] == 'CRITICAL') {
+                        element.innerHTML = element.innerHTML + '<span class="material-symbols-rounded">warning</span>';
+                        element.classList.add(data[id].toLowerCase());
+                    }
+                    else {
+                      element.classList.add(data[id].toLowerCase());
+                    }
                   }
               }
               }
