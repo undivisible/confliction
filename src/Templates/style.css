@@ -236,6 +236,10 @@ p {margin-top: 10px;}
 
 .two, section#main {z-index: 999;}
 
+@media screen and (max-device-width: 1200px) {
+    section#content {width: 40vw;}
+}
+
 @media screen
   and (max-device-width: 765px)
   and (orientation: portrait){
